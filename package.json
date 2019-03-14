@@ -4,7 +4,8 @@
   "description": "Web app to store films description",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "server": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,14 @@
   "bugs": {
     "url": "https://github.com/SO1T/filmStore/issues"
   },
-  "homepage": "https://github.com/SO1T/filmStore#readme"
+  "homepage": "https://github.com/SO1T/filmStore#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "concurrently": "^4.1.0",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.19"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  }
 }
