@@ -1,0 +1,24 @@
+const express = require('express');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const films = require('./routes/api/films');
+
+const app = express();
+
+// Body parser middlware
+app.use(bodyParser.json());
+
+// DB config
+const db = require('./config/keys').mongoURI;
+
+// Connect to Mongo
+
+mongoose.connect(db)
+    .then(() => console.log('Connected to mongo'))
+    .catch((err) => console.log(err));
+
+app.use('/api/films', films);
+
+const port = process.env.PORT || 5000;
+
+app.listen(port, () => console.log(`Server started on ${port}`));
