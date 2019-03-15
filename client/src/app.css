@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+.card {
+    margin: auto;
+    margin-top: 20px;
+    flex: 5;
+}
+
+.card-body {
+    padding-bottom: 0;
+}
+
+.card-body:last-child {
+    padding-bottom: 1.3rem;
+}
+
+.card-title {
+    font-family: 'Roboto', sans-serif;
+    font-size: large;
+    font-weight: bold;
+}
+
+.card-subtitle, .card-text {
+    font-family: 'Roboto', sans-serif;
+    font-size: medium;
+    font-weight: 300;
+    font-style: italic;
+}
+
+.filmlist {
+    margin-top: 1.3rem;
+    max-width: 50%;
+}
+
+.card-del {
+    background-color: #721c24;
+    width: 5%;
+    height: 116px;
+    flex: 1;
+}
+
+.trash {
+    font-size: 32px;
+    text-align: center;
+    margin: auto;
+}
+
+.film-card {
+    width: 100%;
+    display: flex;
+}
