@@ -16,4 +16,10 @@ router.post('/', (req, res) => {
     newFilm.save().then(item => res.json(item));
 });
 
+router.delete('/:id', (req, res) => {
+    Film.findById(req.params.id)
+        .then(film => film.remove().then(() => res.json({ success: true })))
+        .catch(err => res.status(404).json({ success: false} ))
+});
+
 module.exports = router;
