@@ -30,6 +30,11 @@ class Film extends Component {
         }))
     };
 
+    delete = () => {
+        this.props.deleteItem(this.props._id);
+        alert(this.props._id)
+    };
+
     render() {
         const { _id, name, year, format, stars, deleteItem } = this.props;
         return (
@@ -53,7 +58,7 @@ class Film extends Component {
                     className="remove-btn"
                     color="danger"
                     size="sm"
-                    onClick={this.deleteItem.bind(this, _id)}>&times;</Button>)}
+                    onClick={this.delete}>&times;</Button>)}
             </div>
         );
     }

@@ -15,7 +15,7 @@ export default function (state = initialState, { type, payload }) {
         case DELETE_FILM:
             return {
                 ...state,
-                films: state.films.filter(film => film.id !== payload)
+                films: state.films.filter(film => film._id !== payload)
             };
         case ADD_FILM:
             return {
