@@ -18,7 +18,7 @@ class FilmsList extends Component {
         return (
             <Container className="filmlist">
                 {
-                    films.map(({_id, Title, Release, Format, Stars }) => (<Film _id={_id} Title={Title} Release={Release} Format={Format} Stars={Stars} />))
+                    films.map(({_id, Title, Release, Format, Stars }) => (<Film key={_id} _id={_id} Title={Title} Release={Release} Format={Format} Stars={Stars} />))
                 }
             </Container>
         );
