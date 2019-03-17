@@ -1,5 +1,21 @@
-import { GET_FILMS, ADD_FILM, DELETE_FILM, FILMS_LOADING, FILE_UPLOAD} from './types';
+import { GET_FILMS, ADD_FILM, DELETE_FILM, FILMS_LOADING, FILE_UPLOAD, FILM_SORT, FIND_FILM_BY } from './types';
 import axios from 'axios';
+
+export const sortFilm = (order) => {
+  return {
+      type: FILM_SORT,
+      payload: order
+  }
+};
+
+export const findFilmBy = (type, val) => {
+    return {
+        type: FIND_FILM_BY,
+        payload: {
+            type, val
+        }
+    }
+};
 
 export const getFilms = () => dispatch => {
     dispatch(setFilmsLoading());
@@ -12,12 +28,14 @@ export const getFilms = () => dispatch => {
 };
 
 export const addFilm = (film) => dispatch => {
-    axios
-        .post('/api/films/', film)
-        .then(res => dispatch({
-            type: ADD_FILM,
-            payload: res.data
-        })).catch((err) => alert(err))
+    if (valid(film)) {
+        axios
+            .post('/api/films/', film)
+            .then(res => dispatch({
+                type: ADD_FILM,
+                payload: res.data
+            })).catch((err) => alert(err))
+    }
 };
 
 export const deleteFilm = (id) => dispatch => {
@@ -35,15 +53,18 @@ export const setFilmsLoading = () => {
 };
 
 export const uploadFilms = (file) => dispatch => {
-    alert('sdf')
     if (file) {
         const data = new FormData();
         data.append('file', file, file.name);
         axios
             .post('/api/films/upload', data);
-        getFilms();
     }
+    dispatch(getFilms());
     return {
         type: FILE_UPLOAD
     }
+};
+
+const valid = (film) => {
+    return film.Title && film.Format && film.Release && film.Stars;
 };

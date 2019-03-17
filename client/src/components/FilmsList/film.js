@@ -6,8 +6,7 @@ import {
     CardTitle,
     CardSubtitle,
     Collapse,
-    Button,
-    CardGroup
+    Button
 } from 'reactstrap';
 import { connect } from 'react-redux';
 import { deleteFilm } from "../../actions/filmAction";
@@ -21,7 +20,7 @@ class Film extends Component {
     toggle = () => {
         this.setState(state => ({
            collapse: !state.collapse
-        }))
+        }));
     };
 
     toggleClick = () => {
@@ -35,19 +34,19 @@ class Film extends Component {
     };
 
     render() {
-        const { _id, name, year, format, stars, deleteItem } = this.props;
+        const { _id, Title, Release, Format, Stars, deleteItem } = this.props;
         return (
             <div className="film-card">
                 <Card className="card">
                     <div onClick={this.toggleClick}>
                         <CardBody>
-                            <CardTitle>name: {name}</CardTitle>
-                            <CardSubtitle>Year: {year}</CardSubtitle>
+                            <CardTitle>Title: {Title}</CardTitle>
+                            <CardSubtitle>Relese: {Release}</CardSubtitle>
                         </CardBody>
                         <Collapse isOpen={this.state.collapse}>
                             <CardBody>
-                                <CardText>Format: {format}</CardText>
-                                <CardText>Stars: {stars}</CardText>
+                                <CardText>Format: {Format}</CardText>
+                                <CardText>Stars: {Stars}</CardText>
                             </CardBody>
                         </Collapse>
                     </div>

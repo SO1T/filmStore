@@ -1,24 +1,29 @@
 import React, { Component } from 'react';
 import {
     InputGroup,
-    InputGroupAddon,
     InputGroupButtonDropdown,
     InputGroupDropdown,
     Input,
-    Button,
-    Dropdown,
     DropdownToggle,
     DropdownMenu,
     DropdownItem,
     InputGroupText,
     InputGroupButton
 } from 'reactstrap';
+import { connect} from "react-redux";
+import { sortFilm, findFilmBy } from '../../actions/filmAction';
 
-class Toolbar extends React.Component {
+class Toolbar extends Component {
     state = {
-            dropdownOpen: false,
-            searchBy: 'Name'
-        };
+        dropdownOpen: false,
+        searchBy: 'Name',
+        order: 'ASC',
+        input: ''
+    };
+
+    search = (e) => {
+        this.setState({input: e.target.value}, () => this.props.findFilmBy(this.state.searchBy, this.state.input));
+    };
 
     toggleDropDown = () => {
         this.setState({
@@ -32,11 +37,18 @@ class Toolbar extends React.Component {
         })
     };
 
+    sort = () => {
+        this.props.sortFilm(this.state.order);
+        this.setState(state => ({
+           order: state.order === 'ASC' ? 'DESC' : 'ASC'
+        }));
+    };
+
     render() {
         return (
             <div>
                 <InputGroup>
-                    <InputGroupButton color="info" info>Sort</InputGroupButton>
+                    <InputGroupButton color="info" info onClick={this.sort}>Sort</InputGroupButton>
                     <InputGroupText>Search by</InputGroupText>
                     <InputGroupButtonDropdown addonType="select" isOpen={this.state.dropdownOpen} toggle={this.toggleDropDown}>
                         <DropdownToggle caret color="success" success>
@@ -47,11 +59,11 @@ class Toolbar extends React.Component {
                             <DropdownItem onClick={this.selectDropDown.bind(this, 'Star')}>Star</DropdownItem>
                         </DropdownMenu>
                     </InputGroupButtonDropdown>
-                    <Input />
+                    <Input onChange={this.search} />
                 </InputGroup>
             </div>
         );
     }
 }
 
-export default Toolbar;
+export default connect(null, { sortFilm, findFilmBy })(Toolbar);

@@ -2,21 +2,25 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const FilmSchema = Schema({
-    name: {
+    Title: {
         type: String,
         required: true
     },
-    year: {
+    Release: {
         type: Number,
         required: true
     },
-    format: {
+    Format: {
         type: String,
         required: true
     },
-    stars: {
+    Stars: {
         type: String,
         required: true
+    },
+    date: {
+        type: Date,
+        default: Date.now
     }
 });
 

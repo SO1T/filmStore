@@ -15,18 +15,11 @@ import { addFilm, uploadFilms } from "../../actions/filmAction";
 
 class ItemModal extends Component{
     state = {
-        name: '',
-        year: '',
-        format: '',
-        stars: '',
+        Title: '',
+        Release: '',
+        Format: '',
+        Stars: '',
         file: null,
-        loaded: 0
-    };
-
-    toggle = () => {
-        this.setState(state => ({
-            modal: !state.modal
-        }));
     };
 
     onChange = (e) => {
@@ -38,21 +31,20 @@ class ItemModal extends Component{
     handleFile = (e) => {
         this.setState({
             file: e.target.files[0],
-            loaded: 0
         });
     };
 
     onSubmit = (e) => {
         e.preventDefault();
         const newFilm = {
-            name: this.state.name,
-            year: this.state.year,
-            format: this.state.format,
-            stars: JSON.stringify(this.state.stars.split(', '))
+            Title: this.state.Title,
+            Release: this.state.Release,
+            Format: this.state.Format,
+            Stars: this.state.Stars
         };
-        // this.props.uploadFilms(this.state.file);
+        this.props.uploadFilms(this.state.file);
         this.props.addFilm(newFilm);
-        this.toggle();
+        this.props.toggleButton();
     };
 
     render() {
@@ -70,42 +62,41 @@ class ItemModal extends Component{
                     <ModalBody>
                         <Form onSubmit={this.onSubmit}>
                             <FormGroup>
-                                <Label for="name">Name: </Label>
+                                <Label for="Title">Title: </Label>
                                 <Input
                                     type="text"
-                                    name="name"
-                                    id="name"
-                                    placeholder="Name"
-                                    required
+                                    name="Title"
+                                    id="Title"
+                                    placeholder="Title"
                                     onChange={this.onChange}
                                 />
                             </FormGroup>
                             <FormGroup>
-                                <Label for="year">Year: </Label>
+                                <Label for="Release">Release: </Label>
                                 <Input
                                     type="text"
-                                    name="year"
-                                    id="year"
-                                    placeholder="Year"
+                                    name="Release"
+                                    id="Release"
+                                    placeholder="Release"
                                     onChange={this.onChange}
                                 />
                             </FormGroup>
                             <FormGroup>
-                                <Label for="format">Format: </Label>
+                                <Label for="Format">Format: </Label>
                                 <Input
                                     type="text"
-                                    name="format"
-                                    id="format"
+                                    name="Format"
+                                    id="Format"
                                     placeholder="Format"
                                     onChange={this.onChange}
                                 />
                             </FormGroup>
                             <FormGroup>
-                                <Label for="stars">Stars: </Label>
+                                <Label for="Stars">Stars: </Label>
                                 <Input
                                     type="text"
-                                    name="stars"
-                                    id="stars"
+                                    name="Stars"
+                                    id="Stars"
                                     placeholder="Stars"
                                     onChange={this.onChange}
                                 />

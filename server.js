@@ -2,8 +2,13 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const films = require('./routes/api/films');
+const cors = require('cors');
+const fileUpload = require('express-fileupload');
 
 const app = express();
+
+app.use(fileUpload());
+app.use(cors());
 
 // Body parser middlware
 app.use(bodyParser.json());
