@@ -10,7 +10,7 @@ import {
     CardGroup
 } from 'reactstrap';
 import { connect } from 'react-redux';
-import { deleteItem } from "../../actions/filmAction";
+import { deleteFilm } from "../../actions/filmAction";
 
 class Film extends Component {
     state = {
@@ -31,8 +31,7 @@ class Film extends Component {
     };
 
     delete = () => {
-        this.props.deleteItem(this.props._id);
-        alert(this.props._id)
+        this.props.deleteFilm(this.props._id);
     };
 
     render() {
@@ -48,7 +47,7 @@ class Film extends Component {
                         <Collapse isOpen={this.state.collapse}>
                             <CardBody>
                                 <CardText>Format: {format}</CardText>
-                                <CardText>Stars: </CardText>
+                                <CardText>Stars: {stars}</CardText>
                             </CardBody>
                         </Collapse>
                     </div>
@@ -64,4 +63,4 @@ class Film extends Component {
     }
 }
 
-export default connect(null, { deleteItem })(Film);
+export default connect(null, { deleteFilm })(Film);

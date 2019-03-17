@@ -20,7 +20,7 @@ export default function (state = initialState, { type, payload }) {
         case ADD_FILM:
             return {
                 ...state,
-                films: [payload, ...state.items]
+                films: [payload, ...state.films]
             };
         default:
             return state;
