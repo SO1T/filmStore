@@ -22,4 +22,13 @@ router.delete('/:id', (req, res) => {
         .catch(err => res.status(404).json({ success: false} ))
 });
 
+router.post('/upload', (req, res) => {
+    let uploadFile = req.files.file
+    console.log(uploadFile);
+    // const newFilm = new Film({
+    //     name, year, format, stars
+    // });
+    // newFilm.save().then(item => res.json(item));
+});
+
 module.exports = router;
