@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {
     InputGroup,
     InputGroupButtonDropdown,
-    InputGroupDropdown,
     Input,
     DropdownToggle,
     DropdownMenu,
