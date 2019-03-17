@@ -4,6 +4,7 @@
   "description": "Web app to store films description",
   "main": "server.js",
   "scripts": {
+    "client-install": "npm instal --prefix client",
     "start": "node server.js",
     "server": "nodemon server.js",
     "client": "npm start --prefix client",
