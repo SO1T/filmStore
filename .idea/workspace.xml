@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8d724d35-1f3a-4ef3-8e8d-c71303e60469" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/actions/filmAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/actions/filmAction.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/actions/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/actions/types.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/FilmModal/filmModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/FilmModal/filmModal.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/FilmsList/film.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/FilmsList/film.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/reducers/filmReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/reducers/filmReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Film.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/Film.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api/films.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api/films.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <ignored path="$PROJECT_DIR$/client/node_modules/" />
@@ -105,11 +100,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/src/components/FilmModal/filmModal.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="246">
-              <caret line="19" column="19" lean-forward="true" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="42">
+              <caret line="7" column="14" lean-forward="true" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -256,16 +248,15 @@
       <option name="presentableId" value="Default" />
       <updated>1552776113573</updated>
       <workItem from="1552776119604" duration="1455000" />
-      <workItem from="1552812700893" duration="5856000" />
+      <workItem from="1552812700893" duration="6114000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7311000" />
+    <option name="totallyTimeSpent" value="7569000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.50641024" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -357,11 +348,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/components/FilmModal/filmModal.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="19" column="19" lean-forward="true" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="42">
+          <caret line="7" column="14" lean-forward="true" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
         </state>
       </provider>
     </entry>
