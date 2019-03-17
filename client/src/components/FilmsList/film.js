@@ -34,7 +34,7 @@ class Film extends Component {
     };
 
     render() {
-        const { _id, Title, Release, Format, Stars, deleteItem } = this.props;
+        const { Title, Release, Format, Stars } = this.props;
         return (
             <div className="film-card">
                 <Card className="card">
