@@ -2,6 +2,7 @@ import { GET_FILMS, ADD_FILM, DELETE_FILM, FILM_SORT, FIND_FILM_BY } from '../ac
 
 const initialState = {
     films: [],
+    filmsStore: [],
     loading: false
 };
 
@@ -33,17 +34,20 @@ export default function (state = initialState, { type, payload }) {
         case GET_FILMS:
             return {
                 ...state,
-                films: payload
+                films: payload,
+                filmsStore: payload
             };
         case DELETE_FILM:
             return {
                 ...state,
-                films: state.films.filter(film => film._id !== payload)
+                films: state.films.filter(film => film._id !== payload),
+                filmsStore: state.films.filter(film => film._id !== payload)
             };
         case ADD_FILM:
             return {
                 ...state,
-                films: [payload, ...state.films]
+                films: [payload, ...state.films],
+                filmsStore: [payload, ...state.films]
             };
         case FILM_SORT:
             let sf =  state.films.sort((a, b) => {
@@ -59,10 +63,18 @@ export default function (state = initialState, { type, payload }) {
                 films: [...sfo]
             };
         case FIND_FILM_BY:
-            let film = findFilm(payload, state.films);
+            let mstore = state.films;
+            let sstore = state.filmsStore;
+            if (mstore.length > sstore.length) {
+                sstore = mstore;
+            } else {
+                mstore = sstore;
+            }
+            let film = findFilm(payload, sstore);
             return {
                 ...state,
-                films: [...film]
+                films: [...film],
+                filmsStore: [...mstore]
             };
         default:
             return state;

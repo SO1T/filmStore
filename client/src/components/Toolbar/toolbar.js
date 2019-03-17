@@ -22,7 +22,7 @@ class Toolbar extends Component {
     };
 
     search = (e) => {
-        this.setState({input: e.target.value}, () => this.props.findFilmBy(this.state.searchBy, this.state.input));
+        this.props.findFilmBy(this.state.searchBy, e.target.value);
     };
 
     toggleDropDown = () => {
