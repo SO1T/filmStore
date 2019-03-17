@@ -10,13 +10,17 @@ import {
     Input,
     FormText
 } from 'reactstrap';
+import { connect } from "react-redux";
+import { addFilm, uploadFilms } from "../../actions/filmAction";
 
 class ItemModal extends Component{
     state = {
         name: '',
         year: '',
         format: '',
-        stars: ''
+        stars: '',
+        file: null,
+        loaded: 0
     };
 
     toggle = () => {
@@ -31,15 +35,24 @@ class ItemModal extends Component{
         })
     };
 
+    handleFile = (e) => {
+        this.setState({
+            file: e.target.files[0],
+            loaded: 0
+        });
+    };
+
     onSubmit = (e) => {
         e.preventDefault();
-
-        // const newItem = {
-        //     name: this.state.name
-        // };
-        //
-        // this.props.addItem(newItem);
-        // this.toggle();
+        const newFilm = {
+            name: this.state.name,
+            year: this.state.year,
+            format: this.state.format,
+            stars: JSON.stringify(this.state.stars.split(', '))
+        };
+        // this.props.uploadFilms(this.state.file);
+        this.props.addFilm(newFilm);
+        this.toggle();
     };
 
     render() {
@@ -99,7 +112,7 @@ class ItemModal extends Component{
                             </FormGroup>
                             <FormGroup>
                                 <Label for="file">File</Label>
-                                <Input type="file" name="file" id="file" />
+                                <Input type="file" name="file" id="file" onChange={this.handleFile} />
                                 <FormText color="muted">
                                     You can upload file with films
                                 </FormText>
@@ -107,7 +120,6 @@ class ItemModal extends Component{
                                     color="dark"
                                     style={{ marginTop: '2rem' }}
                                     block
-                                    onClick={this.props.toggleButton}
                                 >Add film</Button>
                             </FormGroup>
                         </Form>
@@ -118,4 +130,4 @@ class ItemModal extends Component{
     }
 }
 
-export default ItemModal;
+export default connect(null, { addFilm, uploadFilms })(ItemModal);
