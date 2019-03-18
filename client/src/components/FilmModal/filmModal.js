@@ -67,6 +67,7 @@ class ItemModal extends Component{
                                     type="text"
                                     name="Title"
                                     id="Title"
+                                    pattern="[A-Za-z1-9]"
                                     placeholder="Title"
                                     onChange={this.onChange}
                                 />
@@ -78,6 +79,7 @@ class ItemModal extends Component{
                                     name="Release"
                                     id="Release"
                                     placeholder="Release"
+                                    pattern="[1-9]"
                                     onChange={this.onChange}
                                 />
                             </FormGroup>
@@ -88,6 +90,7 @@ class ItemModal extends Component{
                                     name="Format"
                                     id="Format"
                                     placeholder="Format"
+                                    pattern="[A-Za-z1-9]"
                                     onChange={this.onChange}
                                 />
                             </FormGroup>
@@ -98,6 +101,7 @@ class ItemModal extends Component{
                                     name="Stars"
                                     id="Stars"
                                     placeholder="Stars"
+                                    pattern="[A-Za-z]"
                                     onChange={this.onChange}
                                 />
                             </FormGroup>
