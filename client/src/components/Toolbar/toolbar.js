@@ -12,11 +12,11 @@ import {
 
 class Toolbar extends Component {
     render() {
-        const { sort, dropdownOpen, toggleDropDown, selectDropDown, searchBy, search } = this.props;
+        const { handleSort, dropdownOpen, toggleDropDown, selectDropDown, searchBy, handleInput } = this.props;
         return (
             <div>
                 <InputGroup>
-                    <InputGroupButton color="info" info onClick={sort}>Sort</InputGroupButton>
+                    <InputGroupButton color="info" info onClick={handleSort}>Sort</InputGroupButton>
                     <InputGroupText>Search by</InputGroupText>
                     <InputGroupButtonDropdown addonType="select" isOpen={dropdownOpen} toggle={toggleDropDown}>
                         <DropdownToggle caret color="success" success>
@@ -27,7 +27,7 @@ class Toolbar extends Component {
                             <DropdownItem onClick={selectDropDown.bind(this, 'Star')}>Star</DropdownItem>
                         </DropdownMenu>
                     </InputGroupButtonDropdown>
-                    <Input onChange={search} />
+                    <Input onChange={handleInput} />
                 </InputGroup>
             </div>
         );
