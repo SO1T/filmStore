@@ -6,7 +6,6 @@ import { Provider } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';
 import FilmsList from "./components/FilmsList";
-import Toolbar from "./components/Toolbar/toolbar";
 import store from './store';
 
 
@@ -17,7 +16,6 @@ class App extends Component {
                 <div className="App">
                     <NavBar />
                     <Container>
-                        <Toolbar />
                         <FilmsList />
                     </Container>
                 </div>
