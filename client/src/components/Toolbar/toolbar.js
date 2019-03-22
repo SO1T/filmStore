@@ -9,60 +9,29 @@ import {
     InputGroupText,
     InputGroupButton
 } from 'reactstrap';
-import { connect} from "react-redux";
-import { sortFilm, findFilmBy } from '../../actions/filmAction';
 
 class Toolbar extends Component {
-    state = {
-        dropdownOpen: false,
-        searchBy: 'Name',
-        order: 'ASC',
-        input: ''
-    };
-
-    search = (e) => {
-        this.props.findFilmBy(this.state.searchBy, e.target.value);
-    };
-
-    toggleDropDown = () => {
-        this.setState({
-            dropdownOpen: !this.state.dropdownOpen
-        });
-    };
-
-    selectDropDown = (e) => {
-        this.setState({
-            searchBy: e
-        })
-    };
-
-    sort = () => {
-        this.props.sortFilm(this.state.order);
-        this.setState(state => ({
-           order: state.order === 'ASC' ? 'DESC' : 'ASC'
-        }));
-    };
-
     render() {
+        const { sort, dropdownOpen, toggleDropDown, selectDropDown, searchBy, search } = this.props;
         return (
             <div>
                 <InputGroup>
-                    <InputGroupButton color="info" info onClick={this.sort}>Sort</InputGroupButton>
+                    <InputGroupButton color="info" info onClick={sort}>Sort</InputGroupButton>
                     <InputGroupText>Search by</InputGroupText>
-                    <InputGroupButtonDropdown addonType="select" isOpen={this.state.dropdownOpen} toggle={this.toggleDropDown}>
+                    <InputGroupButtonDropdown addonType="select" isOpen={dropdownOpen} toggle={toggleDropDown}>
                         <DropdownToggle caret color="success" success>
-                            {this.state.searchBy}
+                            {searchBy}
                         </DropdownToggle>
                         <DropdownMenu>
-                            <DropdownItem onClick={this.selectDropDown.bind(this, 'Name')}>Name</DropdownItem>
-                            <DropdownItem onClick={this.selectDropDown.bind(this, 'Star')}>Star</DropdownItem>
+                            <DropdownItem onClick={selectDropDown.bind(this, 'Name')}>Name</DropdownItem>
+                            <DropdownItem onClick={selectDropDown.bind(this, 'Star')}>Star</DropdownItem>
                         </DropdownMenu>
                     </InputGroupButtonDropdown>
-                    <Input onChange={this.search} />
+                    <Input onChange={search} />
                 </InputGroup>
             </div>
         );
     }
 }
 
-export default connect(null, { sortFilm, findFilmBy })(Toolbar);
+export default Toolbar;
