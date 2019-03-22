@@ -1,21 +1,5 @@
-import { GET_FILMS, ADD_FILM, DELETE_FILM, FILMS_LOADING, FILE_UPLOAD, FILM_SORT, FIND_FILM_BY } from './types';
+import { GET_FILMS, ADD_FILM, DELETE_FILM, FILMS_LOADING, FILE_UPLOAD } from './types';
 import axios from 'axios';
-
-export const sortFilm = (order) => {
-  return {
-      type: FILM_SORT,
-      payload: order
-  }
-};
-
-export const findFilmBy = (type, val) => {
-    return {
-        type: FIND_FILM_BY,
-        payload: {
-            type, val
-        }
-    }
-};
 
 export const getFilms = () => dispatch => {
     dispatch(setFilmsLoading());
