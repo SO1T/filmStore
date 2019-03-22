@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 import { getFilms } from '../../actions/filmAction';
 import PropTypes from 'prop-types';
 import Toolbar from '../Toolbar/toolbar';
+import memoize from "memoize-one";
 
 class FilmsList extends Component {
 
@@ -14,34 +15,16 @@ class FilmsList extends Component {
         dropdownOpen: false,
         searchBy: 'Name',
         order: 'ASC',
-        films: []
+        input: ''
     };
 
-    search = (e) => {
-        let newFilms;
-        if (this.state.searchBy === 'Name') {
-            let regn = new RegExp('^' + e.target.value, 'gi');
-            newFilms = this.props.film.films.filter(film => film.Title.match(regn)).sort((a, b) => {
-                if (a.Title < b.Title)
-                    return -1;
-                if (a.Title > b.Title)
-                    return 1;
-                return 0;
-            });
-        } else {
-            let regs = new RegExp('\\b' + e.target.value, 'gi');
-            newFilms = this.props.film.films.filter(film => film.Stars.split(', ').join(' ').toString().match(regs)).sort((a, b) => {
-                if (a.Title < b.Title)
-                    return -1;
-                if (a.Title > b.Title)
-                    return 1;
-                return 0;
-            });
-        }
+    handleInput = (e) => {
         this.setState({
-            films: newFilms
+            input: e.target.value
         });
     };
+
+
 
     toggleDropDown = () => {
         this.setState({
@@ -55,8 +38,38 @@ class FilmsList extends Component {
         })
     };
 
-    sort = () => {
-        let sf =  this.state.films.sort((a, b) => {
+    search = memoize(
+        (films, val) => {
+            if (this.state.searchBy === 'Name') {
+                let regn = new RegExp('^' + val, 'gi');
+                return films.filter(film => film.Title.match(regn)).sort((a, b) => {
+                    if (a.Title < b.Title)
+                        return -1;
+                    if (a.Title > b.Title)
+                        return 1;
+                    return 0;
+                });
+            } else {
+                let regs = new RegExp('\\b' + val, 'gi');
+                return films.filter(film => film.Stars.split(', ').join(' ').toString().match(regs)).sort((a, b) => {
+                    if (a.Title < b.Title)
+                        return -1;
+                    if (a.Title > b.Title)
+                        return 1;
+                    return 0;
+                });
+            }
+        }
+    );
+
+    handleSort = () => {
+      this.setState(state => ({
+          order: state.order === 'ASC' ? 'DESC' : 'ASC'
+      }));
+    };
+
+    sort = (films) => {
+        let sf = films.sort((a, b) => {
             if (a.Title < b.Title)
                 return -1;
             if (a.Title > b.Title)
@@ -64,10 +77,7 @@ class FilmsList extends Component {
             return 0;
         });
         let sfo = this.state.order === 'ASC' ? sf : sf.reverse();
-        this.setState(state => ({
-            order: state.order === 'ASC' ? 'DESC' : 'ASC',
-            films: sfo
-        }));
+        return sfo;
     };
 
     componentDidMount() {
@@ -75,18 +85,18 @@ class FilmsList extends Component {
     }
 
     render() {
-        const films = this.state.films.length > 0 ? this.state.films : this.props.film.films;
+        const filterFilms = this.sort(this.search(this.props.film.films, this.state.input));
         return (
             <Container className="filmlist">
                 <Toolbar
-                    sort={this.sort}
+                    handleSort={this.handleSort}
                     selectDropDown={this.selectDropDown}
                     toggleDropDown={this.toggleDropDown}
                     dropdownOpen={this.state.dropdownOpen}
                     searchBy={this.state.searchBy}
-                    search={this.search} />
+                    handleInput={this.handleInput} />
                 {
-                    films.map(({_id, Title, Release, Format, Stars }) => (<Film key={_id} _id={_id} Title={Title} Release={Release} Format={Format} Stars={Stars} />))
+                    filterFilms.map(({_id, Title, Release, Format, Stars }) => (<Film key={_id} _id={_id} Title={Title} Release={Release} Format={Format} Stars={Stars} />))
                 }
             </Container>
         );
