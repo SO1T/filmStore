@@ -7,7 +7,6 @@ const path = require('path');
 
 const app = express();
 
-app.use(fileUpload());
 app.use(cors());
 
 // Body parser middlware
