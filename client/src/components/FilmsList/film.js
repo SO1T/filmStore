@@ -46,7 +46,7 @@ class Film extends Component {
                         <Collapse isOpen={this.state.collapse}>
                             <CardBody>
                                 <CardText>Format: {Format}</CardText>
-                                <CardText>Stars: {Stars}</CardText>
+                                <CardText>Stars: {JSON.parse(Stars).join(', ')}</CardText>
                             </CardBody>
                         </Collapse>
                     </div>
