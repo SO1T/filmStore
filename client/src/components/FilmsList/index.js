@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import {
     Container
 } from 'reactstrap';
@@ -51,7 +51,7 @@ class FilmsList extends Component {
                 });
             } else {
                 let regs = new RegExp('\\b' + val, 'gi');
-                return films.filter(film => film.Stars.split(', ').join(' ').toString().match(regs)).sort((a, b) => {
+                return films.filter(film => JSON.parse(film.Stars).filter(f => f.match(regs)).length > 0).sort((a, b) => {
                     if (a.Title < b.Title)
                         return -1;
                     if (a.Title > b.Title)
