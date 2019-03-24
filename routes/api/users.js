@@ -3,6 +3,7 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const config = require('config');
 const jwt = require('jsonwebtoken');
+const auth = require('../../middleware/auth');
 
 const ctrlFilms = require('../../controllers/users');
 
@@ -29,7 +30,6 @@ router.post('/', (req, res) => {
                     newUser.password = hash;
                     newUser.save()
                         .then(user => {
-
                             jwt.sign(
                                 { id: user.id },
                                 config.get('jwtSecret'),
@@ -52,10 +52,10 @@ router.post('/', (req, res) => {
         });
 });
 
-// router.post('/', ctrlFilms.addFilm);
-//
-// router.delete('/:id', ctrlFilms.deleteFilm);
-//
-// router.post('/upload', cors(), ctrlFilms.uploadFile);
+router.get('/user', auth, (req, res) => {
+    User.findById(req.user.id)
+        .select('-password')
+        .then(user => res.json(user));
+});
 
 module.exports = router;
