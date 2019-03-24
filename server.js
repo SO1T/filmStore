@@ -1,29 +1,35 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const films = require('./routes/api/films');
 const cors = require('cors');
 const path = require('path');
+const config = require('config');
+
+const films = require('./routes/api/films');
+const users = require('./routes/api/users');
 
 const app = express();
 
 app.use(cors());
 
 // Body parser middlware
-app.use(bodyParser.json());
+app.use(express.json());
 
 // DB config
-const db = require('./config/keys').mongoURI;
+const db = config.get('mongoURI');
 
 // Connect to Mongo
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect(db, { useNewUrlParser: true })
+mongoose.connect(db, {
+    useNewUrlParser: true,
+    useCreateIndex: true
+    })
     .then(() => console.log('Connected to mongo'))
     .catch((err) => console.log(err));
 
 app.use('/api/films', films);
+app.use('/api/users', users);
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'));
