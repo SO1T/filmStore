@@ -6,6 +6,7 @@ const config = require('config');
 
 const films = require('./routes/api/films');
 const users = require('./routes/api/users');
+const auth = require('./routes/api/auth');
 
 const app = express();
 
@@ -30,6 +31,7 @@ mongoose.connect(db, {
 
 app.use('/api/films', films);
 app.use('/api/users', users);
+app.use('/api/auth', auth);
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'));
