@@ -7,9 +7,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';
 import FilmsList from "./components/FilmsList";
 import store from './store';
+import { loadUser } from './actions/authActions';
 
 
 class App extends Component {
+
+    componentDidMount() {
+        store.dispatch(loadUser());
+    }
+
     render() {
         return (
             <Provider store={store}>
