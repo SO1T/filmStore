@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import {
     Collapse,
     Navbar,
@@ -10,10 +10,18 @@ import {
 } from 'reactstrap';
 import FilmModal from "../FilmModal/filmModal";
 import RegisterModal from '../auth/RegisterModal';
+import Logout from '../auth/logout';
+import LoginModal from '../auth/loginModal';
+import { connect } from "react-redux";
+import PropTypes from 'prop-types'
 
 class NavBar extends Component {
     state = {
         collapse: false
+    };
+
+    static propTypes = {
+        auth: PropTypes.object.isRequired
     };
 
     toggle = () => {
@@ -23,6 +31,31 @@ class NavBar extends Component {
     };
 
     render() {
+
+        const { isAuthenticated } = this.props.auth;
+
+        const authLinks = (
+            <Fragment>
+                <NavItem>
+                    <FilmModal />
+                </NavItem>
+                <NavItem>
+                    <Logout />
+                </NavItem>
+            </Fragment>
+        );
+
+        const guestLinks = (
+            <Fragment>
+                <NavItem>
+                    <RegisterModal />
+                </NavItem>
+                <NavItem>
+                    <LoginModal />
+                </NavItem>
+            </Fragment>
+        );
+
         return (
             <div>
                 <Navbar color="dark" dark expand="sm" className="mb-5">
@@ -33,12 +66,7 @@ class NavBar extends Component {
                         <NavbarToggler onClick={this.toggle}/>
                         <Collapse isOpen={this.state.collapse} navbar>
                             <Nav className="ml-auto" navbar>
-                                <NavItem>
-                                    <FilmModal />
-                                </NavItem>
-                                <NavItem>
-                                    <RegisterModal />
-                                </NavItem>
+                                { isAuthenticated ? authLinks : guestLinks }
                             </Nav>
                         </Collapse>
                     </Container>
@@ -46,6 +74,10 @@ class NavBar extends Component {
             </div>
         );
     }
-};
+}
 
-export default NavBar;
+const mapStateToProps = state => ({
+    auth: state.auth
+});
+
+export default connect(mapStateToProps, null)(NavBar);
