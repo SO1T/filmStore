@@ -7,25 +7,18 @@ import {
     NavbarToggler,
     Nav,
     NavItem,
-    Button
 } from 'reactstrap';
-import ItemModal from "../FilmModal/filmModal";
+import FilmModal from "../FilmModal/filmModal";
+import RegisterModal from '../auth/RegisterModal';
 
 class NavBar extends Component {
     state = {
-        modal: false,
         collapse: false
     };
 
     toggle = () => {
         this.setState(state => ({
             collapse: !state.collapse
-        }))
-    };
-
-    toggleButton = () => {
-        this.setState(state => ({
-            modal: !state.modal
         }))
     };
 
@@ -41,13 +34,15 @@ class NavBar extends Component {
                         <Collapse isOpen={this.state.collapse} navbar>
                             <Nav className="ml-auto" navbar>
                                 <NavItem>
-                                    <Button dark color="dark" onClick={this.toggleButton}>Add Film</Button>
+                                    <FilmModal />
+                                </NavItem>
+                                <NavItem>
+                                    <RegisterModal />
                                 </NavItem>
                             </Nav>
                         </Collapse>
                     </Container>
                 </Navbar>
-                {this.state.modal && <ItemModal modal={this.state.modal} toggleButton={this.toggleButton} />}
             </div>
         );
     }
