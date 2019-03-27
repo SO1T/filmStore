@@ -1,5 +1,7 @@
 import { GET_FILMS, ADD_FILM, DELETE_FILM, FILMS_LOADING, FILE_UPLOAD } from './types';
 import axios from 'axios';
+import { tokenConfig } from "./authActions";
+import { returnErrors } from "./errorActions";
 
 export const getFilms = () => dispatch => {
     dispatch(setFilmsLoading());
@@ -9,22 +11,22 @@ export const getFilms = () => dispatch => {
             type: GET_FILMS,
             payload: res.data
         }))
+        .catch(err => dispatch(returnErrors(err.responce.data, err.responce.status)));
 };
 
-export const addFilm = (film) => dispatch => {
-    if (valid(film)) {
+export const addFilm = (film) => (dispatch, getState) => {
         axios
-            .post('/api/films/', film)
+            .post('/api/films/', film, tokenConfig(getState))
             .then(res => dispatch({
                 type: ADD_FILM,
                 payload: res.data
-            })).catch((err) => alert(err))
-    }
+            }))
+            .catch(err => dispatch(returnErrors(err.responce.data, err.responce.status)));
 };
 
-export const deleteFilm = (id) => dispatch => {
+export const deleteFilm = (id) => (dispatch, getState) => {
     axios
-        .delete(`/api/films/${id}`).then(res => dispatch({
+        .delete(`/api/films/${id}`, tokenConfig(getState)).then(res => dispatch({
         type: DELETE_FILM,
         payload: id
     }))
@@ -47,8 +49,4 @@ export const uploadFilms = (file) => dispatch => {
     return {
         type: FILE_UPLOAD
     }
-};
-
-const valid = (film) => {
-    return film.Title && film.Format && film.Release && film.Stars;
 };
