@@ -46,7 +46,7 @@ class FilmModal extends Component{
         };
         this.props.uploadFilms(this.state.file);
         this.props.addFilm(newFilm);
-        this.props.toggleButton();
+        this.toggle();
     };
 
     toggle = () => {
