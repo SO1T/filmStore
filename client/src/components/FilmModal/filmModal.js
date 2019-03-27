@@ -8,18 +8,20 @@ import {
     FormGroup,
     Label,
     Input,
-    FormText
+    FormText,
+    NavLink
 } from 'reactstrap';
 import { connect } from "react-redux";
 import { addFilm, uploadFilms } from "../../actions/filmAction";
 
-class ItemModal extends Component{
+class FilmModal extends Component{
     state = {
         Title: '',
         Release: '',
         Format: '',
         Stars: '',
         file: null,
+        modal: false,
     };
 
     onChange = (e) => {
@@ -47,15 +49,24 @@ class ItemModal extends Component{
         this.props.toggleButton();
     };
 
+    toggle = () => {
+      this.setState({
+          modal: !this.state.modal
+      });
+    };
+
     render() {
         return (
             <div>
+                <NavLink onClick={this.toggle}>
+                    Add films
+                </NavLink>
                 <Modal
-                    isOpen={this.props.modal}
-                    toggle={this.props.toggleButton}
+                    isOpen={this.state.modal}
+                    toggle={this.toggle}
                 >
                     <ModalHeader
-                        toggle={this.props.toggleButton}
+                        toggle={this.toggle}
                     >
                         Add new film
                     </ModalHeader>
@@ -125,4 +136,4 @@ class ItemModal extends Component{
     }
 }
 
-export default connect(null, { addFilm, uploadFilms })(ItemModal);
+export default connect(null, { addFilm, uploadFilms })(FilmModal);
