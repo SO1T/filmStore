@@ -18,15 +18,17 @@ class Film extends Component {
     };
 
     toggle = () => {
-        this.setState(state => ({
-           collapse: !state.collapse
-        }));
+            this.setState(state => ({
+                collapse: !state.collapse
+            }));
     };
 
     toggleClick = () => {
-        this.setState(state => ({
-            delete: !state.delete
-        }))
+        if (this.props.isAuthenticated) {
+            this.setState(state => ({
+                delete: !state.delete
+            }))
+        }
     };
 
     delete = () => {
@@ -34,7 +36,7 @@ class Film extends Component {
     };
 
     render() {
-        const { Title, Release, Format, Stars } = this.props;
+        const { Title, Release, Format, Stars, isAuthenticated } = this.props;
         return (
             <div className="film-card">
                 <Card className="card">
@@ -52,7 +54,7 @@ class Film extends Component {
                     </div>
                     <Button color="dark" onClick={this.toggle}>Expand</Button>
                 </Card>
-                {this.state.delete && (<Button
+                {this.state.delete && isAuthenticated && (<Button
                     className="remove-btn"
                     color="danger"
                     size="sm"
@@ -62,4 +64,8 @@ class Film extends Component {
     }
 }
 
-export default connect(null, { deleteFilm })(Film);
+const mapStateToProps = (state) => ({
+    isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(mapStateToProps, { deleteFilm })(Film);
