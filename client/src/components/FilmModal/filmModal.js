@@ -80,6 +80,7 @@ class FilmModal extends Component{
                                     id="Title"
                                     pattern=".*[A-Za-z1-9]"
                                     placeholder="Title"
+                                    title="It must be latters or nums"
                                     onChange={this.onChange}
                                 />
                             </FormGroup>
@@ -91,6 +92,7 @@ class FilmModal extends Component{
                                     id="Release"
                                     placeholder="Release"
                                     pattern=".*[1-9]"
+                                    title="It must be num"
                                     onChange={this.onChange}
                                 />
                             </FormGroup>
@@ -102,6 +104,7 @@ class FilmModal extends Component{
                                     id="Format"
                                     placeholder="Format"
                                     pattern=".*[A-Za-z1-9]"
+                                    title="It must be latters or nums"
                                     onChange={this.onChange}
                                 />
                             </FormGroup>
@@ -115,13 +118,6 @@ class FilmModal extends Component{
                                     pattern=".*[A-Za-z]"
                                     onChange={this.onChange}
                                 />
-                            </FormGroup>
-                            <FormGroup>
-                                <Label for="file">File</Label>
-                                <Input type="file" name="file" id="file" onChange={this.handleFile} />
-                                <FormText color="muted">
-                                    You can upload file with films
-                                </FormText>
                                 <Button
                                     color="dark"
                                     style={{ marginTop: '2rem' }}
