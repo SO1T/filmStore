@@ -4,7 +4,7 @@ const auth = require('../../middleware/auth');
 
 const ctrlUsers = require('../../controllers/users');
 
-const  User = require('../../models/User');
+const User = require('../../models/User');
 
 
 router.post('/', ctrlUsers.registerUser);
