@@ -6,3 +6,4 @@ const ctrlAuth = require('../../controllers/auth');
 router.post('/', ctrlAuth.authUser);
 
 module.exports = router;
+

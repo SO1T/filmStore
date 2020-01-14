@@ -7,6 +7,7 @@ const config = require('config');
 const films = require('./routes/api/films');
 const users = require('./routes/api/users');
 const auth = require('./routes/api/auth');
+const games = require('./routes/api/games');
 
 const app = express();
 
@@ -29,9 +30,9 @@ mongoose.connect(db, {
     .then(() => console.log('Connected to mongo'))
     .catch((err) => console.log(err));
 
-app.use('/api/films', films);
 app.use('/api/users', users);
 app.use('/api/auth', auth);
+app.use('/api/games', games);
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'));
@@ -44,3 +45,6 @@ if (process.env.NODE_ENV === 'production') {
 const port = process.env.PORT || 5000;
 
 app.listen(port, () => console.log(`Server started on ${port}`));
+
+module.exports = app;
+

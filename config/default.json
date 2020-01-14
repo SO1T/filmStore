@@ -1,4 +1,6 @@
 {
   "mongoURI": "mongodb+srv://trdenys:qwerty654321!@cluster0-kwucq.mongodb.net/test?retryWrites=true",
-  "jwtSecret": "JwTsecret_fOr_FILmStoRE"
+  "jwtSecret": "JwTsecret_fOr_FILmStoRE",
+  "publick_key": "sandbox_i99906938064",
+  "privet_key": "sandbox_LEgaYAOmLAeP7tEit8Ughj8oCA6m51I1jBRIbOQO"
 }

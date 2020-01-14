@@ -2,12 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ffcff20-e6f7-4ca8-870b-944139d3fe1e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/controllers/games.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/games.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/filmStore.rar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/Game.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/api/games.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/auth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/users.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/db/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/default.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/default.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db/films.js" beforeDir="false" afterPath="$PROJECT_DIR$/db/films.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/db/users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/middleware/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/middleware/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/User.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +43,8 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../WebstormProjects/blocknance_web_app" />
@@ -75,17 +86,27 @@
       <workItem from="1559919546162" duration="29000" />
       <workItem from="1575964678134" duration="1229000" />
       <workItem from="1575973278977" duration="274000" />
+      <workItem from="1578403331099" duration="1094000" />
+      <workItem from="1578470304180" duration="37000" />
+      <workItem from="1578915172590" duration="21447000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="740" y="277" key="FileChooserDialogImpl" timestamp="1575979529770">
+    <state x="690" y="270" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1578997024887">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="277" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1575979529770" />
+    <state x="690" y="270" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578997024887" />
+    <state x="740" y="277" key="FileChooserDialogImpl" timestamp="1578930803828">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="277" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1578930803828" />
     <state width="1899" height="282" key="GridCell.Tab.0.bottom" timestamp="1575966767299">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

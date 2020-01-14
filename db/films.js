@@ -1,4 +1,4 @@
-const db = require('../models/Film');
+const db = require('../models/Game');
 
 module.exports = {
     getAllFilms: (req, res) => {
@@ -7,10 +7,10 @@ module.exports = {
     },
     addOne: (req, res) => {
         const { Title, Release, Format, Stars} = req.body;
-        const newFilm = new db({
+        const newGame = new db({
             Title, Release, Format, Stars
         });
-        newFilm.save().then(film => res.json(film)).catch(err => res.statusCode(500));
+        newGame.save().then(film => res.json(film)).catch(err => res.statusCode(500));
     },
     deleteOne: (req, res) => {
         db.findById(req.params.id)

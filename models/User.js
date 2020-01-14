@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const Game = require('./Game');
 
 const UserSchema = Schema({
     name: {
@@ -14,6 +15,10 @@ const UserSchema = Schema({
     password: {
         type: String,
         required: true
+    },
+    gamesIds: {
+        type: [String],
+        required: false
     },
     register_date: {
         type: Date,
